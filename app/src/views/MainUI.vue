@@ -29,15 +29,16 @@ onMounted(()=>{
 
 <template>
   <div class = "Page fixed inset-0 min-h-screen bg-linear-to-br from-white to-amber-100">
-  <div class="Header text-center text-4xl mt-10 ">
+  <div class="Header text-center mt-10 ">
+    <h2 class = "Line text-amber-300 overflow-hidden text-2xl font-limelight text-gray text-shadow-md text-shadow-amber-600/20 mb-5">DOHMH New York City Restaurant Inspection Results</h2>
     <h1 class = "Title text-amber-300 overflow-hidden text-6xl font-limelight text-gray text-shadow-md text-shadow-amber-600/50 mb-5">Guess The Grade!</h1>
   </div>
   <div class="Gamemodes text-center text-4xl mt10 flex flex-wrap items-center gap-10 justify-center flex-row ">
-    <h2 class = ""></h2>
-    <button class = "bg-amber-200 hover:bg-amber-300 text-white tracking-widest text-2xl text-shadow-md text-shadow-amber-600/20 font-fedSero rounded-lg font-bold px-2 py-2">Guess Mode</button>
-    <button class = "bg-amber-200 hover:bg-amber-300 text-white tracking-widest text-2xl text-shadow-md text-shadow-amber-600/20 font-federo rounded-lg font-bold  px-2 py-2">chart 1</button>
-    <button class = "bg-amber-200 hover:bg-amber-300 text-white tracking-widest text-2xl text-shadow-md text-shadow-amber-600/20 font-federo rounded-lg font-bold  px-2 py-2">chart 2</button>
-    <button></button>
+    <router-link :to="{ name: 'game' }" custom v-slot="{ navigate }">
+      <button @click="navigate" class = "bg-amber-200 hover:bg-amber-300 text-white tracking-widest text-2xl text-shadow-md text-shadow-amber-600/20 font-federo rounded-lg font-bold px-2 py-2" >Guess Mode</button>
+    </router-link>
+      <button class = "bg-amber-200 hover:bg-amber-300 text-white tracking-widest text-2xl text-shadow-md text-shadow-amber-600/20 font-federo rounded-lg font-bold  px-2 py-2">chart 1</button>
+      <button class = "bg-amber-200 hover:bg-amber-300 text-white tracking-widest text-2xl text-shadow-md text-shadow-amber-600/20 font-federo rounded-lg font-bold  px-2 py-2">chart 2</button>
   </div>
   </div>
 </template>

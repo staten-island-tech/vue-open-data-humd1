@@ -1,1 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Limelight&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Federo&display=swap');
 @import 'tailwindcss';
+
+.font-limelight {
+  font-family: 'Limelight', sans-serif;
+}
+
+.font-federo {
+  font-family: 'Federo', sans-serif;
+}

@@ -1,13 +1,10 @@
-<template>
-    <div>
-        <h1>Guess Game</h1>
-    </div>
-</template>
-
-<script setup>
-
+<script setup lang="ts">
 </script>
 
-<style lang="scss" scoped>
+<template>
+    <h1>GAME</h1>
+</template>
 
-</style>
+<style scoped></style>
+
+

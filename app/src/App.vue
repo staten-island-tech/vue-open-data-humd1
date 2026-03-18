@@ -1,15 +1,11 @@
-const restaurants = ref([])
-<template>
-  <div>
-    <Routerlink to="/home"></Routerlink>
-    <router-view/>
-  </div>
-</template>
-
-<script setup>
-
+<script setup lang="ts">
 </script>
 
-<style lang="scss" scoped>
+<template>
+    <Routerlink to="/home"></Routerlink>
+    <router-view/>
+</template>
 
-</style>
+<style scoped></style>
+
+

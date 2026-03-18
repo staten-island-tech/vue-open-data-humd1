@@ -11,7 +11,7 @@ const router = createRouter({
       component: MainUI,
     },
     {
-      path: '/',
+      path: '/game',
       name: 'game',
       component: GuessGame,
     }

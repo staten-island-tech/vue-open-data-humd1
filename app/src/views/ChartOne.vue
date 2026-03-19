@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import RestaurantHeatmap from '@/components/RestaurantHeatmap.vue'
+import RestaurantRadial from '@/components/RestaurantRadial.vue'
 </script>
 
 <template>
-  <RestaurantHeatmap />
+  <RestaurantRadial />
 </template>

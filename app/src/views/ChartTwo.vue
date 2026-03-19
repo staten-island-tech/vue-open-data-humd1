@@ -1,13 +1,7 @@
-<template>
-    <div>
-
-    </div>
-</template>
-
 <script setup lang="ts">
-
+import RestaurantBar from '@/components/RestaurantBar.vue'
 </script>
 
-<style scoped>
-
-</style>
+<template>
+  <RestaurantBar />
+</template>

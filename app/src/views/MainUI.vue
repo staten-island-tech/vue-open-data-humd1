@@ -38,13 +38,13 @@ const items = [
 <template>
   <div class="Page fixed inset-0 min-h-screen bg-linear-to-br from-white to-amber-100">
   <div class="Header text-center mt-10 ">
-    <h2 class="Line text-amber-300 overflow-hidden text-2xl font-limelight text-gray text-shadow-md text-shadow-amber-600/20 mb-5">DOHMH New York City Restaurant Inspection Results</h2>
+    <h2 class="Line text-amber-300 overflow-hidden text-2xl font-limelight text-gray text-shadow-md text-shadow-amber-600/20 mb-5"> ☆DOHMH New York City Restaurant Inspection Results☆</h2>
     <h1 class="Title text-amber-300 overflow-hidden text-6xl font-limelight text-gray text-shadow-md text-shadow-amber-600/50 mb-10">Guess The Grade!</h1>
   </div>
   <div style="overflow: hidden; width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; margin-bottom: 10px;">
     <div class="carousel-track">
       <div
-        v-for="(item, i) in [...items, ...items, ...items, ...items, ...items, ...items]"
+        v-for="(item, i) in [...items, ...items, ...items, ...items, ...items, ...items, ...items, ...items, ...items, ...items]"
         :key="`${item.id}-${i}`"
         class="carousel-item"
       >
@@ -73,17 +73,17 @@ const items = [
   <div tabindex="0" role="button" class="btn btn-lg btn-info btn-circle bg-amber-200 border-amber-300 text-white">🌣</div>
   <button class="fab-main-action btn-lg btn btn-circle btn-success  bg-amber-300 border-amber-400 text-amber-500">🌣</button>
 
-  <div class="tooltip [--tooltip-color:amber-300] [--tooltip-text-color:white] tooltip-left" data-tip="Default">
-    <button class="btn text-2xl btn-circle  bg-amber-300 border-amber-400 text-amber-500">1</button>
+  <div class="tooltip [--tooltip-color:amber-300] [--tooltip-text-color:white] tooltip-left" data-tip="Default (yellow)">
+    <button class="btn text-2xl btn-circle  bg-amber-300 border-amber-400 text-white">✓</button>
   </div>
   <div class="tooltip tooltip-left" data-tip="Sunset">
-    <button class="btn text-2xl btn-circle  bg-amber-300 border-amber-400 text-amber-500">2</button>
+    <button class="btn text-2xl btn-circle  bg-amber-300 border-amber-400 text-white">☀︎</button>
   </div>
   <div class="tooltip" data-tip="Cool">
-    <button class="btn text-2xl btn-circle  bg-amber-300 border-amber-400 text-amber-500">3</button>
+    <button class="btn text-2xl btn-circle  bg-amber-300 border-amber-400 text-white">❆</button>
   </div>
   <div class="tooltip" data-tip="Dark">
-    <button class="btn text-2xl btn-circle  bg-amber-300 border-amber-400 text-amber-500">4</button>
+    <button class="btn text-2xl btn-circle  bg-amber-300 border-amber-400 text-white">☾</button>
   </div>
 </div>
   </div>
@@ -106,6 +106,6 @@ const items = [
 
 @keyframes scroll {
   from { transform: translateX(0); }
-  to   { transform: translateX(-20%); }
+  to   { transform: translateX(-10%); }
 }
 </style>

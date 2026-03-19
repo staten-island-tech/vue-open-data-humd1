@@ -37,8 +37,12 @@ onMounted(()=>{
     <router-link :to="{ name: 'game' }" custom v-slot="{ navigate }">
       <button @click="navigate" class = "bg-amber-200 hover:bg-amber-300 text-white tracking-widest text-2xl text-shadow-md text-shadow-amber-600/20 font-federo rounded-lg font-bold px-2 py-2" >Guess Mode</button>
     </router-link>
-      <button class = "bg-amber-200 hover:bg-amber-300 text-white tracking-widest text-2xl text-shadow-md text-shadow-amber-600/20 font-federo rounded-lg font-bold  px-2 py-2">chart 1</button>
-      <button class = "bg-amber-200 hover:bg-amber-300 text-white tracking-widest text-2xl text-shadow-md text-shadow-amber-600/20 font-federo rounded-lg font-bold  px-2 py-2">chart 2</button>
+    <router-link :to="{ name: 'chart1' }" custom v-slot="{ navigate }">
+      <button @click="navigate" class = "bg-amber-200 hover:bg-amber-300 text-white tracking-widest text-2xl text-shadow-md text-shadow-amber-600/20 font-federo rounded-lg font-bold  px-2 py-2">heatmap (d3+claude)</button>
+    </router-link>
+    <router-link :to="{ name: 'chart2' }" custom v-slot="{ navigate }">
+      <button @click="navigate" class = "bg-amber-200 hover:bg-amber-300 text-white tracking-widest text-2xl text-shadow-md text-shadow-amber-600/20 font-federo rounded-lg font-bold  px-2 py-2">chart 2</button>
+    </router-link>
   </div>
   </div>
 </template>

@@ -35,6 +35,7 @@ const items = [
 
 </script>
 
+
 <template>
   <div class="Page fixed inset-0 min-h-screen bg-linear-to-br from-white to-amber-100">
   <div class="Header text-center mt-10 ">

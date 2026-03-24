@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import RestaurantBar from '@/components/RestaurantBar.vue'
+import RestaurantMap from '@/components/RestaurantMap.vue'
 </script>
 
 <template>
-  <RestaurantBar />
+  <RestaurantMap />
 </template>

@@ -17,7 +17,6 @@
 
     <div v-if="restaurants.length && !loading" class="content">
 
-      <!-- Grade filter pills -->
       <div class="grade-filters">
         <button
           v-for="g in allGrades"
@@ -30,7 +29,6 @@
         </button>
       </div>
 
-      <!-- Tooltip -->
       <div v-if="tooltip.visible" class="tooltip" :style="{ left: tooltip.x + 'px', top: tooltip.y + 'px' }">
         <strong>{{ tooltip.name }}</strong>
         <span class="tip-row">{{ tooltip.cuisine }}</span>
@@ -39,12 +37,10 @@
         <span class="tip-row" v-if="tooltip.score">Score: {{ tooltip.score }}</span>
       </div>
 
-      <!-- Map -->
       <div class="chart-center">
         <div ref="mapEl" class="map-container" />
       </div>
 
-      <!-- Legend -->
       <div class="legend">
         <div v-for="g in allGrades" :key="g" class="legend-item">
           <span :class="['legend-dot', `grade-${g}`]" />
@@ -115,17 +111,16 @@ const gradeCounts = computed(() => {
   return counts
 })
 
-// ── Fetch ─────────────────────────────────────
 async function getRestaurants() {
   loading.value = true
   error.value = null
   try {
-    const response = await fetch(
+    const res = await fetch(
       "https://data.cityofnewyork.us/resource/43nn-pn8j.json?$limit=5000&$where=latitude IS NOT NULL",
       { headers: { 'X-App-Token': TOKEN } }
     )
-    if (!response.ok) throw new Error(`HTTP ${response.status}`)
-    const data: Inspection[] = await response.json()
+    if (!res.ok) throw new Error(`HTTP ${res.status}`)
+    const data: Inspection[] = await res.json()
     restaurants.value = data.filter(r => r.latitude && r.longitude)
     await nextTick()
     renderMap()
@@ -136,7 +131,6 @@ async function getRestaurants() {
   }
 }
 
-// ── Render Map ─────────────────────────────────
 async function renderMap() {
   if (!mapEl.value) return
   const el = mapEl.value
@@ -150,7 +144,16 @@ async function renderMap() {
     .attr('width', width)
     .attr('height', height)
 
-  // Projection
+  const zoomG = svg.append('g')
+
+  const zoom = d3.zoom<SVGSVGElement, unknown>()
+    .scaleExtent([1, 8])
+    .on('zoom', (event) => {
+      zoomG.attr('transform', event.transform)
+    })
+
+  svg.call(zoom as any)
+
   const projection = d3.geoMercator()
     .center([-73.98, 40.72])
     .scale(width * 58)
@@ -158,25 +161,20 @@ async function renderMap() {
 
   const pathGen = d3.geoPath().projection(projection)
 
-  // ✅ REAL borough GeoJSON
-  const boroughGeo: any = await d3.json(
+  const boroughGeo = await d3.json<any>(
     'https://raw.githubusercontent.com/dwillis/nyc-maps/master/boroughs.geojson'
   )
 
-  const mapG = svg.append('g')
-
-  // Boroughs
-  mapG.selectAll('path')
+  zoomG.selectAll('path')
     .data(boroughGeo.features)
     .join('path')
-    .attr('d', pathGen)
+    .attr('d', (d: any) => pathGen(d) as string)
     .attr('fill', '#fef9ee')
     .attr('stroke', '#d97706')
     .attr('stroke-width', 1.2)
     .attr('stroke-opacity', 0.6)
 
-  // Labels
-  mapG.selectAll('text')
+  zoomG.selectAll('text')
     .data(boroughGeo.features)
     .join('text')
     .attr('transform', (d: any) => {
@@ -186,14 +184,14 @@ async function renderMap() {
     .attr('text-anchor', 'middle')
     .attr('font-size', '11px')
     .attr('fill', '#92400e')
+    .attr('pointer-events', 'none')
     .text((d: any) => d.properties.borough)
 
-  // Dots
   const visible = restaurants.value.filter(
-    r => activeGrades.value.has(r.grade || '__')
+    r => r.latitude && r.longitude && activeGrades.value.has(r.grade || '__')
   )
 
-  svg.append('g')
+  zoomG.append('g')
     .selectAll('circle')
     .data(visible)
     .join('circle')
@@ -217,6 +215,11 @@ async function renderMap() {
         score: d.score,
       }
       d3.select(event.target as Element).attr('r', 6)
+    })
+    .on('mousemove', (event: MouseEvent) => {
+      const rect = el.getBoundingClientRect()
+      tooltip.value.x = event.clientX - rect.left
+      tooltip.value.y = event.clientY - rect.top - 10
     })
     .on('mouseleave', (event: MouseEvent) => {
       tooltip.value.visible = false

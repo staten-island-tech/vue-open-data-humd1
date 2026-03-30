@@ -54,9 +54,6 @@ const items = [
     </div>
   </div>
   <div class="Gamemodes text-center text-4xl mt-15 flex flex-wrap items-center gap-10 justify-center flex-row">
-    <router-link :to="{ name: 'game' }" custom v-slot="{ navigate }">
-      <button @click="navigate" class="bg-amber-200 hover:bg-amber-300 text-white tracking-widest text-2xl text-shadow-md text-shadow-amber-600/20 font-federo rounded-lg font-bold px-2 py-2" >Guess Mode</button>
-    </router-link>
     <router-link :to="{ name: 'chart1' }" custom v-slot="{ navigate }">
       <button @click="navigate" class="bg-amber-200 hover:bg-amber-300 text-white tracking-widest text-2xl text-shadow-md text-shadow-amber-600/20 font-federo rounded-lg font-bold  px-2 py-2">radial bar </button>
     </router-link>
@@ -65,29 +62,10 @@ const items = [
     </router-link>
   </div>
   <div class = "mt-20 directions text-center flex flex-wrap items-center gap-10 justify-center flex-column  text-amber-300 tracking-widest text-2xl text-shadow-md text-shadow-amber-600/20 font-federo">
-    <p class="mb-5">Click "Guess Mode" to play a game where you guess the restaurant's grade based on the given information.  </p>
     <p class="mb-5">Click "radial bar" to see a chart comparing restaurant violations in each borough, and "grade map" to view restaurant grades by location (both made by claude + d3)</p>
-    <p class="mb-5">Use the toggle on the bottom to adjust your color theme. </p>
     
   </div>
-  <div class="fab fab-flower">
-  <div tabindex="0" role="button" class="btn btn-lg btn-info btn-circle bg-amber-200 border-amber-300 text-white">🌣</div>
-  <button class="fab-main-action btn-lg btn btn-circle btn-success  bg-amber-300 border-amber-400 text-amber-500">🌣</button>
-
-  <div class="tooltip [--tooltip-color:amber-300] [--tooltip-text-color:white] tooltip-left" data-tip="Default (yellow)">
-    <button class="btn text-2xl btn-circle  bg-amber-300 border-amber-400 text-white">✓</button>
-  </div>
-  <div class="tooltip tooltip-left" data-tip="Sunset">
-    <button class="btn text-2xl btn-circle  bg-amber-300 border-amber-400 text-white">☀︎</button>
-  </div>
-  <div class="tooltip" data-tip="Cool">
-    <button class="btn text-2xl btn-circle  bg-amber-300 border-amber-400 text-white">❆</button>
-  </div>
-  <div class="tooltip" data-tip="Dark">
-    <button class="btn text-2xl btn-circle  bg-amber-300 border-amber-400 text-white">☾</button>
-  </div>
 </div>
-  </div>
 </template>
 
 <style scoped>
